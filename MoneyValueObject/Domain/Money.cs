@@ -67,4 +67,21 @@ public class Money : ValueObject
     {
         return new Money(a.Value / b, a.Currency);
     }
+
+    public static Money operator -(Money a)
+    {
+        return new Money(-a.Value, a.Currency);
+    }
+
+    public static Money operator --(Money a)
+    {
+        var val = a.Value - 1;
+        return new Money(val, a.Currency);
+    }
+
+    public static Money operator ++(Money a)
+    {
+        var val = a.Value + 1;
+        return new Money(val, a.Currency);
+    }
 }
