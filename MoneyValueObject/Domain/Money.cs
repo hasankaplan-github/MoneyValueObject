@@ -3,6 +3,7 @@ using Haskap.DddBase.Domain;
 using MoneyValueObject.DomainShared;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -25,6 +26,16 @@ public class Money : ValueObject
     {
         yield return Value;
         yield return Currency;
+    }
+
+    public override string ToString()
+    {
+        var region = CultureInfo
+            .GetCultures(CultureTypes.SpecificCultures)
+            .Select(x => new RegionInfo(x.Name))
+            .FirstOrDefault(p => p.ISOCurrencySymbol == Currency.ToString());
+
+        return $"{region?.CurrencySymbol ?? string.Empty} {Value.ToString("F2")}";
     }
 
     public Money Convert(ICurrencyConverter currencyConverter, Currency toCurrency)
