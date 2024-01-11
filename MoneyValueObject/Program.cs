@@ -11,6 +11,7 @@ var m3 = new Money(0.3m);
 var m4 = new Money(1345.3324m);
 var m5 = new Money(1345.335m);
 var m6 = new Money(1345.3324m, MoneyValueObject.DomainShared.Currency.EUR);
+var m7 = new Money(345634561345.567335345m);
 
 Console.WriteLine(m.ToString());
 Console.WriteLine(m1.ToString());
@@ -19,3 +20,4 @@ Console.WriteLine(m3.ToString());
 Console.WriteLine(m4.ToString());
 Console.WriteLine(m5.ToString());
 Console.WriteLine(m6.ToString());
+Console.WriteLine(m7.ToString());

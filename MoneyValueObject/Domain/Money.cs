@@ -35,7 +35,7 @@ public class Money : ValueObject
             .Select(x => new RegionInfo(x.Name))
             .FirstOrDefault(p => p.ISOCurrencySymbol == Currency.ToString());
 
-        return $"{region?.CurrencySymbol ?? string.Empty} {Value.ToString("F2")}";
+        return $"{region?.CurrencySymbol ?? string.Empty} {Value.ToString("#,##0.00")}";
     }
 
     public Money Convert(ICurrencyConverter currencyConverter, Currency toCurrency)
